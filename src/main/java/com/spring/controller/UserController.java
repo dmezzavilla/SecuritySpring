@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * @author Daniel Mezzavilla
+ */
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -21,7 +24,7 @@ public class UserController {
 
     @GetMapping
     public ModelAndView findAllActive(Model model) {
-        model.addAttribute("allUsers", userService.findAllByIsActiveIsTrue());
+        /*model.addAttribute("allUsers", userService.findAllByIsActiveIsTrue());*/
         return new ModelAndView("users");
     }
 

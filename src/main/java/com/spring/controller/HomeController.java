@@ -12,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
+/**
+ * @author Daniel Mezzavilla
+ */
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -26,6 +29,7 @@ public class HomeController {
     @GetMapping("addroot")
     public String addroot() {
         User userFind = userService.findUserByEmail("root@mezzavilla.com.br");
+        System.out.println(userFind);
         if (userFind == null) {
             // Inserindo usuário padrão
             User rootUser = new User();

@@ -2,6 +2,9 @@ package com.spring.entity;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 
+/**
+ * @author Daniel Mezzavilla
+ */
 public class CurrentUser extends org.springframework.security.core.userdetails.User {
 
     private static final long serialVersionUID = 1L;

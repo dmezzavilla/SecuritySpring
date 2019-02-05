@@ -7,14 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * @author Daniel Mezzavilla
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public User findUserByEmail(String email) {
@@ -27,29 +31,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Iterable<User> findAllByIsActiveIsTrue() {
-        return userRepository.findAllByIsActiveIsTrue();
-    }
-
-    @Override
     public void save(User user) {
         String passwordHash = new BCryptPasswordEncoder().encode(user.getPassword());
         user.setPassword(passwordHash);
         userRepository.save(user);
     }
 
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
-
-    @Override
-    public User findById(Long id) {
-        return null;
-    }
-
-    @Override
-    public void merge(User user) {
-
-    }
 }

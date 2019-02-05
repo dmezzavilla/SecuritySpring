@@ -18,8 +18,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @ComponentScan("com.spring")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final CurrentUserDetailsService currentUserDetailsService;
+
     @Autowired
-    CurrentUserDetailsService currentUserDetailsService;
+    public SecurityConfig(CurrentUserDetailsService currentUserDetailsService) {
+        this.currentUserDetailsService = currentUserDetailsService;
+    }
 
 
     @Override
@@ -27,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/static/**").permitAll()
-                .antMatchers("/", "/auth/**").permitAll()
+                .antMatchers("/", "/auth/**", "/addroot").permitAll()
                 //.antMatchers("/gestao").hasAnyAuthority("ADMIN") //.hasAnyAuthority("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()

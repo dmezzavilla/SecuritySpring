@@ -5,8 +5,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * @author Daniel Mezzavilla
+ */
 @Entity
-@Table(name = "system_users")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
