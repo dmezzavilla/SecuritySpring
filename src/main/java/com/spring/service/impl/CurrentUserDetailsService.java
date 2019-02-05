@@ -42,6 +42,6 @@ public class CurrentUserDetailsService implements UserDetailsService, Applicatio
         String email = ((UserDetails) event.getAuthentication().getPrincipal()).getUsername();
         User user = userService.findUserByEmail(email);
         user.setUltimoLogin(new Date());
-        userService.mergeUltimoLogin(user);
+        userService.saveLastLogin(user);
     }
 }

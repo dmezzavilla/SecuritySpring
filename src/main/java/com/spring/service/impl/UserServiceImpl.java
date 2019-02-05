@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/**
- * @author Daniel Mezzavilla
- */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -26,15 +23,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void mergeUltimoLogin(User user) {
-
-    }
-
-    @Override
     public void save(User user) {
         String passwordHash = new BCryptPasswordEncoder().encode(user.getPassword());
         user.setPassword(passwordHash);
         userRepository.save(user);
     }
+
+    @Override
+    public void saveLastLogin(User user) {
+        userRepository.save(user);
+    }
+
 
 }
