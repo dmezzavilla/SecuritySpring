@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/static/**").permitAll()
-                .antMatchers("/", "/auth/**", "/addroot").permitAll()
+                .antMatchers("/", "/auth/**").permitAll()
                 //.antMatchers("/gestao").hasAnyAuthority("ADMIN") //.hasAnyAuthority("ADMIN", "USER")
                 .anyRequest().authenticated()
                 .and()
@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/auth/login?error=true")
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/index")
                 .permitAll()
                 .and()
                 .logout()

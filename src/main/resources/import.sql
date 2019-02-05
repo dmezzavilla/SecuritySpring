@@ -1,0 +1,1 @@
+INSERT INTO `securityspring`.`User` (`id`, `cpf`, `dataDeCadastro`, `dataDeDesativacao`, `email`, `isActive`, `name`, `password`, `surname`, `ultimoLogin`, `userRole`) VALUES ('1', '', now(), now(), 'root@mezzavilla.com.br', true, 'Daniel', '$2a$10$FfMap/5kMykGOKzb7uvDj.2QM4wi7GAwstMFnkMAWbxRCzvLX/jQS', 'Mezzavilla', now(), '0');
